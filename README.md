@@ -1,4 +1,26 @@
-# 🏋️‍♂️ Proyecto Maestría: Plataforma Inteligente de Gestión Wellness basada en IA
+# 🏋️‍♂️ Plataforma Inteligente de Gestión Wellness basada en IA
+
+Bienvenido al repositorio oficial del proyecto de maestría: **Sistema de Gestión de Rutinas Wellness con AI-Augmented Development**. 
+
+Este proyecto implementa una arquitectura moderna orientada a microservicios, integrando un ecosistema de agentes de Inteligencia Artificial para automatizar la creación de rutinas, predecir el progreso del atleta y prevenir el abandono mediante motivación inteligente.
+
+## 🚀 Arquitectura y Tecnologías (Tech Stack)
+* **Paradigma:** Arquitectura orientada a servicios, Event-driven, Cloud-native.
+* **Integración IA:** AI-first, MCP-ready architecture.
+* **Nicho Wellness Seleccionado:** Fitness y Levantamiento de Pesas.
+
+![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Google Cloud](https://img.shields.io/badge/GoogleCloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+
+## 📦 Entregables del Sprint Técnico 1: Ingeniería de Requisitos y Calidad
+En este sprint se ha definido formalmente el sistema y se ha establecido la arquitectura base.
+1. [x] Selección del nicho y límites del sistema.
+2. [x] Requisitos Funcionales y No Funcionales (ISO 25010).
+3. [x] Historias de Usuario (Metodología Ágil).
+4. [x] Diagramas UML de Casos de Uso.
+5. [x] Diseño Preliminar del Wellness Coach Agent.
 
 ## 📋 Requisitos Funcionales (RF)
 Estos requisitos definen qué debe hacer el sistema. Los hemos dividido por módulos lógicos para facilitar la futura creación de microservicios.
