@@ -92,3 +92,60 @@ Actor Principal: Agentes de Inteligencia Artificial
 Actor Principal: Administrador 
 9. CU-09: Gestionar Catálogo Maestro de Ejercicios: El administrador añade, edita o elimina ejercicios de la base de datos central (agregando músculos implicados y videos). 
 10. CU-10: Monitorear Métricas Globales: El administrador visualiza un dashboard con el número total de usuarios activos, rutinas generadas por la IA y tasa de retención.
+
+flowchart LR
+    %% Definición de Actores
+    U([👤 Usuario Atleta])
+    Admin([🛠️ Administrador])
+    IA_WC([🤖 Wellness Coach Agent])
+    IA_AN([📊 Analytics Agent])
+    IA_MO([🔥 Motivation Agent])
+
+    %% Límite del Sistema
+    subgraph Plataforma Inteligente Wellness
+        direction TB
+        CU1((CU-01: Registrar \nCuenta y Perfil))
+        CU2((CU-02: Registrar \nEntrenamiento))
+        CU3((CU-03: Visualizar \nProgreso))
+        CU4((CU-04: Solicitar \nRutina IA))
+        CU5((CU-05: Consultar \nChatbot Alternativas))
+        
+        CU6((CU-06: Generar Plan \nde Entrenamiento))
+        CU7((CU-07: Evaluar Progreso \ny Estancamiento))
+        CU8((CU-08: Detectar Abandono \ny Motivar))
+        
+        CU9((CU-09: Gestionar Catálogo \nde Ejercicios))
+        CU10((CU-10: Monitorear \nMétricas Globales))
+    end
+
+    %% Relaciones Usuario
+    U --> CU1
+    U --> CU2
+    U --> CU3
+    U --> CU4
+    U --> CU5
+
+    %% Relaciones y dependencias IA (Includes / Extends lógicos)
+    CU4 -. "<<include>>" .-> CU6
+    IA_WC --> CU6
+    IA_WC --> CU5
+    
+    CU2 -. "<<trigger>>" .-> CU7
+    IA_AN --> CU7
+    
+    CU7 -. "<<informa a>>" .-> IA_MO
+    IA_MO --> CU8
+
+    %% Relaciones Administrador
+    Admin --> CU9
+    Admin --> CU10
+
+    %% Estilos (Opcional para que se vea elegante en GitHub)
+    classDef actorStyle fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef usecaseStyle fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
+    classDef iaStyle fill:#e8f5e9,stroke:#388e3c,stroke-width:2px,color:#000;
+    
+    class U,Admin actorStyle;
+    class CU1,CU2,CU3,CU4,CU5,CU9,CU10 usecaseStyle;
+    class CU6,CU7,CU8 iaStyle;
+    class IA_WC,IA_AN,IA_MO actorStyle;
