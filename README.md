@@ -18,7 +18,7 @@ Módulo 3: Inteligencia Artificial (Wellness Coach Agent)
 Módulo 4: Analítica y Progreso
 •	RF-11: El sistema debe mostrar un panel interactivo (Dashboard) con la proyección de progreso físico y de cargas en el tiempo estimado.
 ________________________________________
-🛡️ Requisitos No Funcionales (RNF) - Evaluación ISO 25010
+ Requisitos No Funcionales (RNF) - Evaluación ISO 25010
 Estos requisitos definen cómo el sistema debe comportarse, alineados directamente con el estándar de calidad ISO 25010 solicitado por la profesora.
 •	RNF-01: Adecuación Funcional: Las sugerencias de rutinas generadas por la IA deben basarse en principios comprobados de hipertrofia y fuerza, asegurando que los ejercicios recomendados sean biomecánicamente coherentes.
 •	RNF-02: Eficiencia de Desempeño:
@@ -33,7 +33,7 @@ o	La comunicación entre el cliente y el servidor, y entre microservicios, debe 
 •	RNF-07: Mantenibilidad: El código debe estar versionado en GitHub, utilizando convenciones de Clean Code y separado estrictamente en microservicios independientes (Auth, Workout-Core, IA-Agent).
 •	RNF-08: Portabilidad: El sistema debe poder ejecutarse y desplegarse en cualquier entorno compatible con contenedores Docker, sin depender exclusivamente de una sola nube.
 
-📘 Épica 1: Onboarding y Configuración de Perfil
+ Épica 1: Onboarding y Configuración de Perfil
 HU-01: Registro de perfil y objetivos iniciales
 •	Historia: Como usuario nuevo, quiero registrar mis datos físicos (peso, altura, edad) y mi objetivo principal (ej. ganar músculo, perder grasa) para que el sistema pueda generar recomendaciones personalizadas.
 •	Criterios de Aceptación:
@@ -41,7 +41,7 @@ o	El sistema debe validar que los campos de datos físicos sean numéricos y est
 o	El usuario debe poder seleccionar su objetivo de una lista predefinida.
 o	Los datos deben guardarse correctamente en la base de datos (ej. Firestore) vinculados al ID del usuario.
 
-📘 Épica 2: Registro del Entrenamiento (Core Wellness)
+ Épica 2: Registro del Entrenamiento (Core Wellness)
 HU-02: Registro de series en tiempo real
 •	Historia: Como usuario en el gimnasio, quiero anotar rápidamente el peso y las repeticiones de cada serie que realizo para llevar un control exacto de mi sobrecarga progresiva sin perder tiempo.
 •	Criterios de Aceptación:
@@ -53,7 +53,7 @@ HU-03: Visualización del historial de un ejercicio
 •	Criterios de Aceptación:
 o	Al seleccionar un ejercicio, se debe mostrar el peso máximo levantado (1RM estimado) y el historial de las últimas 4 semanas.
 
-📘 Épica 3: Interacción con el Wellness Coach Agent (IA)
+ Épica 3: Interacción con el Wellness Coach Agent (IA)
 HU-04: Generación de rutina semanal automatizada
 •	Historia: Como usuario, quiero solicitar al Agente IA que me arme una rutina para los próximos 4 días basada en mis objetivos y mi nivel, para no tener que planificarla manualmente.
 •	Criterios de Aceptación:
@@ -70,14 +70,14 @@ HU-06: Detección proactiva de estancamiento (Push AI)
 o	El sistema (Analytics Agent) debe evaluar semanalmente el volumen de carga y la frecuencia de asistencia.
 o	Si detecta estancamiento o riesgo de abandono, debe generar un mensaje motivacional o sugerir una semana de descarga (deload) a través de una notificación.
 
-📘 Épica 4: Administración de la Plataforma
+ Épica 4: Administración de la Plataforma
 HU-07: Dashboard de métricas globales
 •	Historia: Como administrador del sistema, quiero visualizar un panel de control con métricas generales de los usuarios (usuarios activos, rutinas más generadas, tasa de abandono) para evaluar el rendimiento de la plataforma.
 •	Criterios de Aceptación:
 o	El dashboard debe consumir datos agregados (preferiblemente desde BigQuery).
 o	Debe mostrar gráficos de retención mensual y uso de la IA.
 
-📝 Catálogo de los 10 Casos de Uso
+ Catálogo de los 10 Casos de Uso
 Actor Principal: Usuario (Atleta)
 1.	CU-01: Registrar Cuenta y Perfil Físico: El usuario ingresa sus credenciales, datos corporales (peso, altura) y meta de fitness (hipertrofia, fuerza) para iniciar el sistema.
 2.	CU-02: Registrar Entrenamiento en Tiempo Real: El usuario introduce el peso y las repeticiones ejecutadas en cada serie de un ejercicio mientras está en el gimnasio.
