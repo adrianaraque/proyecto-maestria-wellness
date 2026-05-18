@@ -183,3 +183,49 @@ flowchart LR
     class CU1,CU2,CU3,CU4,CU5,CU9,CU10 usecaseStyle;
     class CU6,CU7,CU8 iaStyle;
     class IA_WC,IA_AN,IA_MO actorStyle;
+```
+# 🤖 Diseño Preliminar: Wellness Coach Agent
+
+## 1. Identidad y Propósito
+El **Wellness Coach Agent** es el microservicio inteligente central de la plataforma. Su objetivo es actuar como un entrenador personal experto en hipertrofia y fuerza, capaz de diseñar rutinas semanales adaptativas y resolver dudas del usuario en tiempo real.
+
+* **Naturaleza:** Agente autónomo reactivo.
+* **Modelo Base Recomendado:** GPT-4o-mini o Claude 3.5 Haiku (optimizados para velocidad y bajo costo).
+* **Framework:** LangChain o LlamaIndex (Python).
+
+## 2. Arquitectura de Integración (MCP-ready)
+Para evitar alucinaciones, el agente no tendrá los datos del usuario en su prompt inicial, sino que utilizará el protocolo MCP (Model Context Protocol) para invocar herramientas (Tools) de forma segura y consultar la base de datos solo cuando sea necesario.
+
+### Herramientas del Agente (Tools):
+1. `get_user_profile(user_id)`: Recupera edad, peso, objetivo (hipertrofia/fuerza) y nivel de experiencia.
+2. `get_exercise_history(user_id, exercise_id)`: Retorna el 1RM y el historial de levantamientos recientes para aplicar sobrecarga progresiva.
+3. `search_exercise_database(muscle_group)`: Busca ejercicios alternativos en el catálogo central si el usuario pide un reemplazo.
+
+## 3. Estructura del Prompt del Sistema (System Prompt)
+El comportamiento del agente estará delimitado por el siguiente *System Prompt* base:
+
+> "Eres un entrenador personal de élite especializado en entrenamiento de fuerza. Tu objetivo es diseñar rutinas seguras y efectivas para el usuario. 
+> Reglas: 
+> 1. Basa tus recomendaciones en la sobrecarga progresiva. 
+> 2. Si el usuario te pide un ejercicio alternativo, utiliza la herramienta 'search_exercise_database'. 
+> 3. Nunca des consejos médicos ni diagnostiques lesiones. Si el usuario reporta dolor agudo, recomiéndale consultar a un médico."
+
+## 4. Flujo de Ejecución (Diagrama de Razonamiento ReAct)
+El agente utilizará el paradigma de razonamiento *ReAct* (Reason + Act). Cuando el usuario solicita una rutina, el agente sigue este ciclo:
+
+```mermaid
+flowchart TD
+    Inicio([Solicitud del Usuario]) --> Pensamiento1
+    
+    Pensamiento1[💭 Think: Necesito conocer el nivel y objetivo del usuario] --> Accion1
+    Accion1[[🛠️ Act: Ejecutar Tool 'get_user_profile']] --> Observacion1
+    
+    Observacion1[(👁️ Observe: Usuario Intermedio, Objetivo: Hipertrofia)] --> Pensamiento2
+    Pensamiento2[💭 Think: Ahora necesito ver sus cargas de la semana pasada] --> Accion2
+    
+    Accion2[[🛠️ Act: Ejecutar Tool 'get_exercise_history']] --> Observacion2
+    Observacion2[(👁️ Observe: Sentadilla 80kg x 8 reps)] --> Pensamiento3
+    
+    Pensamiento3[💭 Think: Aplicaré sobrecarga progresiva agregando 2.5kg] --> Generar
+    
+    Generar([✅ Respuesta Final: Rutina generada en formato JSON para la App])
